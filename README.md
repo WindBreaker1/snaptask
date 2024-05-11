@@ -15,3 +15,4 @@ However, it can be hard to find a frog to eat, so SnapTask is here to help you f
 ## Ideas
 
 - Add some sort of alert if the user doesn't finish a task in time?
+- Add other stuff.
