@@ -3,9 +3,11 @@ import { useState } from 'react';
 import upSvg from '../assets/up.svg';
 import downSvg from '../assets/down.svg';
 import trashSvg from '../assets/trash.svg';
+import checkSvg from '../assets/check.svg';
+import xSvg from '../assets/x.svg';
 
 export default function Todo(props) {
-  const {icon, title, text, time, toggleChecked, appValues, deleteTodo, moveUp, moveDown} = props;
+  const {icon, title, text, time, todo, id, checked, toggleCheck, deleteTodo, moveUp, moveDown} = props;
 
   const [isEditingIcon, setIsEditingIcon] = useState(false);
   const [currentIcon, setCurrentIcon] = useState(icon);
@@ -16,8 +18,8 @@ export default function Todo(props) {
   const [isEditing, setIsEditing] = useState(false);
   const [currentText, setCurrentText] = useState(text);
 
-  const handleKeyDownIcon = (event) => {
-    if (event.key === 'Enter') {
+  const handleKeyDownIcon = (e) => {
+    if (e.key === 'Enter' || e.key === 'Escape') {
       setIsEditingIcon(false);
     }
   };
@@ -28,16 +30,15 @@ export default function Todo(props) {
     }
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === 'Escape') {
       setIsEditing(false);
     }
   };
 
-
   return (
     <div className='todo-container' 
-      style={{ backgroundColor: appValues.todo.checked ? 'var(--todo-check-color)' : 'initial' }}>
+      style={{ backgroundColor: checked ? 'var(--todo-check-color)' : 'initial' }}>
       <div className='title-section'>
         {/* icon */}
         {isEditingIcon ? (
@@ -79,13 +80,7 @@ export default function Todo(props) {
       {/* all buttons */}
       <div className='todo-buttons'>
         {/* checkbox */}
-        <input
-          type='checkbox'
-          id='todo-checkbox'
-          checked={appValues.todo.checked}
-          onChange={() => toggleChecked(appValues.todo.id)}
-        />
-        <label htmlFor='todo-checkbox' className={appValues.todo.checked ? 'checked' : ''}></label>
+        <button className={`check-button ${checked ? 'checked' : ''}`} onClick={() => toggleCheck(id)}></button>
         {/* functional buttons */}
         <img className='svg' src={upSvg} alt="Move up" onClick={moveUp} />
         <img className='svg' src={downSvg} alt="Move down" onClick={moveDown} />

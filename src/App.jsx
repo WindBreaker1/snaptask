@@ -1,10 +1,17 @@
 import './App.css'
 import { useState, useEffect } from 'react';
+import {v4 as uuidv4} from 'uuid';
 import Header from './components/Header';
 import Todo from './components/Todo';
 
 function App() {
-  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
+  // Retrieve todos from localStorage and ensure each todo has a unique id
+  const [todos, setTodos] = useState(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    return storedTodos.map(todo => ({ ...todo, id: todo.id || uuidv4() }));
+  });
+
+  // Store todos in localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
@@ -16,7 +23,7 @@ function App() {
   const [time, setTime] = useState('');
 
   const addTodo = () => {
-    const newTodo = { id: Date.now(), icon: icon, title: title, text: input, time: time, checked: false };
+    const newTodo = { id: uuidv4(), icon: icon, title: title, text: input, time: time, checked: false };
     setTodos([...todos, newTodo]);
     setIcon('');
     setTitle('');
@@ -80,15 +87,15 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const toggleChecked = (id) => {
-    setTodos(todos => todos.map(todo => {
+  const toggleCheck = (id) => {
+    setTodos(prevTodos => prevTodos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, checked: !todo.checked };
       } else {
         return todo;
       }
     }));
-  }
+  };
 
   return (
     <div className='app'>
@@ -114,11 +121,13 @@ function App() {
           title={todo.title}
           text={todo.text} 
           time={formatTime(todo.time)}
-          toggleChecked={toggleChecked}
+          todo={todo}
+          id={todo.id}
+          checked={todo.checked}
+          toggleCheck={toggleCheck}
           deleteTodo={() => deleteTodo(todo.id)} 
           moveUp={() => moveUp(todo.id)} 
-          moveDown={() => moveDown(todo.id)} 
-          appValues={{todo, todos, setTodos, input, setInput}}
+          moveDown={() => moveDown(todo.id)}
           />
         ))}
       </div>

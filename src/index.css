@@ -17,8 +17,9 @@
   --svg-bg-color: #d9d9d9;
   --svg-bg-hover-color: #c3c3c3;
   --todo-check-color: #51cd84;
-  --link-color: #747bff;
-  --link-color-hover: #535bf2;
+  --link-color: #51cd84;
+  --link-color-hover: #2c744a;
+  --modal-bg-color: #e4e4e4e7;
 
   /* Dark theme */
   --background-color: #242424;
@@ -31,8 +32,9 @@
   --svg-bg-color: #353535;
   --svg-bg-hover-color: #434343;
   --todo-check-color: #1d643a;
-  --link-color: #4e1ddf;
-  --link-color-hover: #2251c5;
+  --link-color: #1d643a;
+  --link-color-hover: #32a060;
+  --modal-bg-color: #3f3f3fe7;
 }
 
 .app {
