@@ -1,0 +1,117 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Light theme */
+  --background-color: #ffffff;
+  --text-color: #0c0c0c;
+  --input-bg-color: #acacac;
+  --button-bg-color: #1a1a1a;
+  --button-text-color: #ffffff;
+  --button-hover-color: #2a2a2a;
+  --nav-item-color: #7f7f7f;
+  --svg-bg-color: #d9d9d9;
+  --svg-bg-hover-color: #c3c3c3;
+  --todo-check-color: #51cd84;
+  --link-color: #747bff;
+  --link-color-hover: #535bf2;
+
+  /* Dark theme */
+  --background-color: #242424;
+  --text-color: #ffffffde;
+  --input-bg-color: #3e3e3e;
+  --button-bg-color: #ffffff;
+  --button-text-color: #1a1a1a;
+  --button-hover-color: #848484;
+  --nav-item-color: #7f7f7f;
+  --svg-bg-color: #353535;
+  --svg-bg-hover-color: #434343;
+  --todo-check-color: #1d643a;
+  --link-color: #4e1ddf;
+  --link-color-hover: #2251c5;
+}
+
+.app {
+  min-height: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--link-color-hover);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  height: 100%;
+}
+
+h1 {
+  font-size: 3.2em;
+}
+
+input {
+  font-size: 1em;
+  font-family: inherit;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: var(--input-bg-color);
+  color: inherit;
+  transition: border-color 0.25s;
+}
+
+textarea {
+  font-size: 1em;
+  font-family: inherit;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: var(--input-bg-color);
+  color: inherit;
+  transition: border-color 0.25s;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  background-color: var(--button-hover-color);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* svg */
+.svg {
+  width: 20px; /* Adjust this value to make the SVG smaller or larger */
+  height: 20px; /* Adjust this value to make the SVG smaller or larger */
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--svg-bg-color);
+  cursor: pointer;
+}
+
+.svg:hover {
+  background-color: var(--svg-bg-hover-color);
+}
